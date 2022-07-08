@@ -7,6 +7,288 @@
 	},
 	"item": [
 		{
+			"name": "Carts",
+			"item": [
+				{
+					"name": "get user cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"62c74aa293d4e175b9ad6be5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"62c74aa293d4e175b9ad6be5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"62c85b6b83d7d55b8792ee2d\",\n        \"user\": \"62c74aa293d4e175b9ad6be5\",\n        \"carts\": [],\n        \"__v\": 0\n    }\n]"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/carts/aaa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"aaa"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Error getting carts: Cart not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "update user cart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"carts\": [\n        {\n            \"product\": \"62c7430bd48a322e49b43a58\",\n            \"amount\": 5\n        },\n        {\n            \"product\": \"62c7430bd48a322e49b43a59\",\n            \"amount\": 10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"62c74aa293d4e175b9ad6be5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carts\": [\n        {\n            \"product\": \"62c7430bd48a322e49b43a58\",\n            \"amount\": 5\n        },\n        {\n            \"product\": \"62c7430bd48a322e49b43a59\",\n            \"amount\": 10\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"62c74aa293d4e175b9ad6be5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"62c85b6b83d7d55b8792ee2d\",\n    \"user\": \"62c74aa293d4e175b9ad6be5\",\n    \"carts\": [\n        {\n            \"product\": \"62c7430bd48a322e49b43a58\",\n            \"amount\": 5\n        },\n        {\n            \"product\": \"62c7430bd48a322e49b43a59\",\n            \"amount\": 10\n        }\n    ],\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"carts\": [\n        {\n            \"product\": \"62c7430bd48a322e49b43a58\",\n            \"amount\": 5\n        },\n        {\n            \"product\": \"62c7430bd48a322e49b43a59\",\n            \"amount\": 10\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carts/aaa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"aaa"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Error updating cart: Cart not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "empty user cart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								"62c74aa293d4e175b9ad6be5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carts/62c74aa293d4e175b9ad6be5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"62c74aa293d4e175b9ad6be5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"62c85b6b83d7d55b8792ee2d\",\n    \"user\": \"62c74aa293d4e175b9ad6be5\",\n    \"carts\": [],\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/carts/aaa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"carts",
+										"aaa"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Error deleting product: Cart not found\"\n}"
+						}
+					]
+				}
+			],
+			"description": "> Requests to test Carts endpoints"
+		},
+		{
 			"name": "Products",
 			"item": [
 				{

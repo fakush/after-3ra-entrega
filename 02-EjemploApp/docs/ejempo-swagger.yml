@@ -9,11 +9,101 @@ info:
 servers:
   - url: http://localhost:8080
 tags:
+  - name: Carts
+    description: '> Requests to test Carts endpoints'
   - name: Products
     description: '> Requests to test the products endpoints.'
   - name: Users
     description: '> Requests to test users endpoints'
 paths:
+  /api/carts/62c74aa293d4e175b9ad6be5:
+    get:
+      tags:
+        - Carts
+      summary: get user cart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - _id: 62c85b6b83d7d55b8792ee2d
+                  user: 62c74aa293d4e175b9ad6be5
+                  carts: []
+                  __v: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: 'Error getting carts: Cart not found'
+    put:
+      tags:
+        - Carts
+      summary: update user cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                carts:
+                  - product: 62c7430bd48a322e49b43a58
+                    amount: 5
+                  - product: 62c7430bd48a322e49b43a59
+                    amount: 10
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                _id: 62c85b6b83d7d55b8792ee2d
+                user: 62c74aa293d4e175b9ad6be5
+                carts:
+                  - product: 62c7430bd48a322e49b43a58
+                    amount: 5
+                  - product: 62c7430bd48a322e49b43a59
+                    amount: 10
+                __v: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: 'Error updating cart: Cart not found'
+    delete:
+      tags:
+        - Carts
+      summary: empty user cart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                _id: 62c85b6b83d7d55b8792ee2d
+                user: 62c74aa293d4e175b9ad6be5
+                carts: []
+                __v: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                error: 'Error deleting product: Cart not found'
   /api/products/:
     get:
       tags:

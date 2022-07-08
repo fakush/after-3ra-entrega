@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import Logger from '../utils/logger'
 import users from './users'
 import MongoDB from '../utils/mongoConnection'
+import { info } from 'console'
 
 const dbCollection = 'carts'
 const productSchema = new mongoose.Schema({
@@ -30,6 +31,9 @@ class Carts {
   async getCart(id: string) {
     try {
       const response = await this.carts.find({ user: id })
+      if (response.length == 0) {
+        throw new Error('Cart not found')
+      }
       return response
     } catch (error: any) {
       Logger.error(error.message)
@@ -49,8 +53,10 @@ class Carts {
 
   async updateCart(id: string, cart: any) {
     try {
-      const cart: any = await this.carts.find({ user: id })
-      const response = await this.carts.findByIdAndUpdate(cart._id, cart)
+      const response = await this.carts.findOneAndUpdate({ user: id }, cart)
+      if (!response) {
+        throw new Error('Cart not found')
+      }
       return response
     } catch (error: any) {
       Logger.error(error.message)
@@ -58,9 +64,12 @@ class Carts {
     }
   }
 
-  async emptyCart(cart: any) {
+  async emptyCart(id: string) {
     try {
-      const response = await this.carts.findByIdAndUpdate(cart._id, cart)
+      const response = await this.carts.findOneAndUpdate({ user: id }, { carts: []})
+      if (!response) {
+        throw new Error('Cart not found')
+      }
       return response
     } catch (error: any) {
       Logger.error(error.message)

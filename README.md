@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to After 3ra Pre-Entrega del proyecto final 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/fakush/after-3ra-entrega/docs" target="_blank">
+  <a href="https://github.com/fakush/after-3ra-entrega/tree/main/02-EjemploApp/docs" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://opensource.org/licenses/MIT" target="_blank">

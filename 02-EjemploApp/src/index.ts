@@ -38,6 +38,8 @@ if (cluster.isMaster && clusterArgument) {
   )
 }
 
+Logger.debug('Este es un cambio porque si')
+
 // Imprimo en Consola el código de salida
 process.on('exit', (code) => {
   Logger.error(`Exit ==> El proceso termino con codigo ${code}\n\n`)

@@ -10,101 +10,224 @@ servers:
   - url: http://localhost:8080
 tags:
   - name: Products
-    description: Endpoints to test the products database.
+    description: '> Requests to test the products endpoints.'
+  - name: Users
+    description: '> Requests to test users endpoints'
 paths:
   /api/products/:
     get:
       tags:
         - Products
-      summary: Get Products
+      summary: get all products
       responses:
         '200':
           description: OK
-          headers:
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Accept-Ranges:
-              schema:
-                type: string
-                example: bytes
-            Content-Type:
-              schema:
-                type: string
-                example: text/html; charset=UTF-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '3258'
-            ETag:
-              schema:
-                type: string
-                example: W/"cba-NbChDUznGckD3vhBp0A0E/hVjBo"
-            Date:
-              schema:
-                type: string
-                example: Thu, 07 Jul 2022 18:56:55 GMT
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=5
           content:
             application/json:
               schema:
                 type: object
               example:
-                msg: mocked response
+                - _id: 62c7430bd48a322e49b43a57
+                  name: Oriental Steel Chips
+                  description: >-
+                    The slim & simple Maple Gaming Keyboard from Dev Byte comes
+                    with a sleek body and 7- Color RGB LED Back-lighting for
+                    smart functionality
+                  code: tu439
+                  img: https://loremflickr.com/640/480/technics
+                  price: 88586
+                  stock: 867
+                  __v: 0
         '400':
           description: Bad Request
-          headers:
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Accept-Ranges:
-              schema:
-                type: string
-                example: bytes
-            Content-Type:
-              schema:
-                type: string
-                example: text/html; charset=UTF-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '3258'
-            ETag:
-              schema:
-                type: string
-                example: W/"cba-NbChDUznGckD3vhBp0A0E/hVjBo"
-            Date:
-              schema:
-                type: string
-                example: Thu, 07 Jul 2022 18:56:55 GMT
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Keep-Alive:
-              schema:
-                type: string
-                example: timeout=5
           content:
             application/json:
               schema:
                 type: object
               example:
                 msg: mocked error response
+    post:
+      tags:
+        - Products
+      summary: post a product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: New Steel Chips
+                description: >-
+                  The slim & simple Maple Gaming Keyboard from Dev Byte comes
+                  with a sleek body and 7- Color RGB LED Back-lighting for smart
+                  functionality
+                code: tu4a9
+                img: https://loremflickr.com/640/480/technics
+                price: 999
+                stock: 333
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: 'Adding product: '
+                data:
+                  name: New Steel Chips
+                  description: >-
+                    The slim & simple Maple Gaming Keyboard from Dev Byte comes
+                    with a sleek body and 7- Color RGB LED Back-lighting for
+                    smart functionality
+                  code: tu4a9
+                  img: https://loremflickr.com/640/480/technics
+                  price: 999
+                  stock: 333
+                  _id: 62c79061104673accf6457c3
+                  __v: 0
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: >-
+                  Falta ingresar alguno de los campos obligatorios o está en un
+                  formato incorrecto: Name, Code, Price y Stock
+  /api/products/wrongproduct:
+    get:
+      tags:
+        - Products
+      summary: get a single product
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                _id: 62c7430bd48a322e49b43a57
+                name: Oriental Steel Chips
+                description: >-
+                  The slim & simple Maple Gaming Keyboard from Dev Byte comes
+                  with a sleek body and 7- Color RGB LED Back-lighting for smart
+                  functionality
+                code: tu439
+                img: https://loremflickr.com/640/480/technics
+                price: 88586
+                stock: 867
+                __v: 0
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: >-
+                  Error getting product: Cast to ObjectId failed for value
+                  "62c7430bd48a322e49b43a" (type string) at path "_id" for model
+                  "products"
+  /api/products/62c7430bd48a322e49b43a58:
+    put:
+      tags:
+        - Products
+      summary: update a product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John Lennon Album
+                description: This is a description
+                code: 3x3x3x
+                img: https://loremflickr.com/640/480/technics
+                price: 888
+                stock: 111
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: Updating Product
+                data:
+                  _id: 62c7430bd48a322e49b43a58
+                  name: John Lennon Album
+                  description: This is a description
+                  code: 3x3x3x
+                  img: https://loremflickr.com/640/480/technics
+                  price: 888
+                  stock: 111
+                  __v: 0
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: >-
+                  Falta ingresar alguno de los campos obligatorios o está en un
+                  formato incorrecto: Name, Code, Price y Stock
+  /api/auth/signup:
+    post:
+      tags:
+        - Users
+      summary: user signup
+      description: Signup new user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                firstName: Pepe
+                lastName: Perez
+                email: pepeperez@coder.com
+                age: 48
+                isAdmin: false
+                password: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: signup successful
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Bad Request
+  /api/auth/login:
+    get:
+      tags:
+        - Users
+      summary: user login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                msg: login successful
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                type: string
+              example: Unauthorized

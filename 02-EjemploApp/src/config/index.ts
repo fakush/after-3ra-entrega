@@ -4,6 +4,11 @@ dotenv.config();
 
 const venv = {
   PORT: process.env.PORT || 8080,
+
+  DB_ENV: process.env.DB_ENV || 'mongodb',
+
+  SQLITE_DB: process.env.SQLITE_DB || 'sqlite',
+
   MONGO_ATLAS_USER: process.env.MONGO_ATLAS_USER || 'user',
   MONGO_ATLAS_PASSWORD: process.env.MONGO_ATLAS_PASSWORD || 'pwd',
   MONGO_ATLAS_CLUSTER: process.env.MONGO_ATLAS_CLUSTER || 'clusterUrl',

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import Logger from '../utils/logger'
+import logger from '../utils/logger'
 import { faker } from '@faker-js/faker'
-import MongoDB from '../utils/mongoConnection'
+import mongoDB from '../utils/mongoConnection'
 
 const dbCollection = 'products'
 const productSchema = new mongoose.Schema({
@@ -35,11 +35,11 @@ class Products {
   private products
 
   constructor() {
-    MongoDB.getConnection()
+    mongoDB.getConnection()
     this.products = mongoose.model(dbCollection, productSchema)
     this.products.count().then((count) => {
       if (count < 1) {
-        Logger.warn('Insertando Products Data Mockup')
+        logger.warn('Insertando Products Data Mockup')
         this.products.insertMany(seedDB(50))
       }
     })
@@ -50,7 +50,7 @@ class Products {
       const response = await this.products.find()
       return response
     } catch (error: any) {
-      Logger.error(error.message)
+      logger.error(error.message)
       throw new Error(`Error getting products: ${error.message}`)
     }
   }
@@ -60,7 +60,7 @@ class Products {
       const response = await this.products.findById(id)
       return response
     } catch (error: any) {
-      Logger.error(error.message)
+      logger.error(error.message)
       throw new Error(`Error getting product: ${error.message}`)
     }
   }
@@ -70,7 +70,7 @@ class Products {
       const response = await this.products.create(product)
       return response
     } catch (error: any) {
-      Logger.error(error.message)
+      logger.error(error.message)
       throw new Error(`Error creating product: ${error.message}`)
     }
   }
@@ -80,7 +80,7 @@ class Products {
       const response = await this.products.findByIdAndUpdate(id, product)
       return response
     } catch (error: any) {
-      Logger.error(error.message)
+      logger.error(error.message)
       throw new Error(`Error getting product: ${error.message}`)
     }
   }
@@ -90,7 +90,7 @@ class Products {
       const response = await this.products.findByIdAndDelete(id)
       return response
     } catch (error: any) {
-      Logger.error(error.message)
+      logger.error(error.message)
       throw new Error(`Error deleting product: ${error.message}`)
     }
   }

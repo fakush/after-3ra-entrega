@@ -2,7 +2,7 @@
 
 ## Facundo Creus
 
-### 🏠 [Homepage](https://github.com/fakush/after-3ra-entrega/02-EjemploApp)
+### 🏠 [Homepage](https://github.com/fakush/after-3ra-entrega/03-EjemploCapas)
 
 ## Stack
 

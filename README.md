@@ -15,6 +15,8 @@
 
 ### ✨ [Demo](https://github.com/fakush/after-3ra-entrega)
 
+### 📝 [Documentation](https://editor.swagger.io/?url=https://raw.githubusercontent.com/fakush/after-3ra-entrega/main/02-EjemploApp/docs/ejempo-swagger.yml)
+
 ## Install
 
 ```sh

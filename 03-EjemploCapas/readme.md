@@ -4,6 +4,8 @@
 
 ### 🏠 [Homepage](https://github.com/fakush/after-3ra-entrega/03-EjemploCapas)
 
+### 📝 [Documentation](https://editor.swagger.io/?url=https://raw.githubusercontent.com/fakush/after-3ra-entrega/main/02-EjemploApp/docs/ejempo-swagger.yml)
+
 ## Stack
 
 <h5 align="center">App en Node JS. Código en Typescript. Servidor Express. Motor de Plantillas Handlebars. WebSocket Socket.IO</h5>
